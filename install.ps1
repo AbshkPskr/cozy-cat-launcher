@@ -76,8 +76,9 @@ if ($Restore) {
 
 # ---- 3. Get the APK -------------------------------------------------------------------------
 if (-not $Apk) {
-    $local = Join-Path $PSScriptRoot 'app\build\outputs\apk\release\app-release.apk'
-    if ($PSScriptRoot -and (Test-Path $local)) { $Apk = $local }
+    # Use a local build when run from a clone of the repo (not when piped through iex)
+    $local = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'app\build\outputs\apk\release\app-release.apk' } else { '' }
+    if ($local -and (Test-Path $local)) { $Apk = $local }
     else {
         $Apk = Join-Path $Work 'CozyCatLauncher.apk'
         Say 'Downloading the latest Cozy Cat Launcher release...'
