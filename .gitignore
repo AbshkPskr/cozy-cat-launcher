@@ -1,0 +1,22 @@
+# Build output
+.gradle/
+build/
+app/build/
+*.apk
+*.aab
+.kotlin/
+
+# Local machine settings and secrets
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Art pipeline scratch output
+art/dbg/
+art/__pycache__/
